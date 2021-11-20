@@ -1,0 +1,52 @@
+/* map.css */
+@import '~leaflet/dist/leaflet.css';
+
+@media (max-width: 580px) {
+	.leaflet-control-container {
+		display: none;
+	}
+}
+
+:root {
+	--dark-gray: hsl(0, 0%, 17%);
+	--md-gray: hsl(0, 0%, 59%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch; /* deixa a rolagem suave */
+}
+body {
+	overflow-x: hidden !important;
+}
+
+// Dual Ring
+.lds-dual-ring {
+	display: inline-block;
+	width: auto;
+	height: auto;
+}
+.lds-dual-ring:after {
+	content: ' ';
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 1px;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	border-color: #fff transparent #fff transparent;
+	animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

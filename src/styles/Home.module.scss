@@ -1,0 +1,271 @@
+.container {
+	display: grid;
+	grid-template-rows: 2fr 4fr;
+	@media (max-width: 580px) {
+		display: grid;
+		grid-template-rows: 350px auto;
+	}
+	width: 100vw;
+	height: 100vh;
+
+	.leaflet-container {
+		z-index: 100;
+	}
+
+	.searchBox {
+		// bottom: -100px;
+		width: 100%;
+		height: 100%;
+		background: url('/pattern-bg.png') no-repeat center;
+		@media (max-width: 580px) {
+			background: url('/pattern-bg.png') no-repeat top;
+			background-size: 150rem;
+		}
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		position: relative;
+
+		h2 {
+			font-family: 'Rokin', sans-serif;
+			font-size: 2.5rem;
+			color: #fff;
+			font-weight: 500;
+			margin-top: 3rem;
+			margin-bottom: 3rem;
+		}
+
+		> div {
+			display: flex;
+			align-items: center;
+			transition: 0.5s;
+			margin-bottom: 0rem;
+
+			input {
+				border: none;
+				padding: 1.1rem;
+				font-size: 1.3rem;
+				width: 35rem;
+				border-radius: 1rem 0 0 1rem;
+				color: var(--dark-gray);
+				outline: none;
+
+				&::placeholder {
+					color: var(--md-gray);
+				}
+			}
+
+			button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				cursor: pointer;
+				background-color: black;
+				border: none;
+				border-radius: 0 1rem 1rem 0;
+
+				height: 100%;
+				width: 4rem;
+
+				transition: 0.5s;
+
+				&:hover {
+					background-color: var(--dark-gray);
+				}
+
+				&:disabled {
+					background: var(--md-gray);
+				}
+			}
+		}
+
+		@media (max-width: 1080px) {
+			h2 {
+				font-size: 2.25rem;
+			}
+			> div input {
+				width: 28rem;
+				font-size: 1.1rem;
+			}
+			button {
+				width: 4rem;
+			}
+		}
+
+		@media (max-width: 720px) {
+			.searchBox {
+				h2 {
+					font-size: 1.6rem;
+				}
+				> div input {
+					width: 22rem;
+				}
+				button {
+					width: 4rem;
+				}
+			}
+		}
+		@media (max-width: 580px) {
+			h2 {
+				font-size: 2rem;
+				padding-top: 2rem;
+				margin: 4rem 0 2rem 0;
+			}
+			> div input {
+				padding: 1.3rem;
+				width: 70vw;
+				font-size: 1.5rem;
+				font-weight: 700;
+
+				&::placeholder {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.searchResults {
+		background: #fff;
+		border-radius: 1rem;
+		-webkit-box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.2);
+		box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.2);
+
+		z-index: 2;
+		@media (max-width: 580px) {
+			margin-top: -3rem;
+			padding: 0 0.75rem;
+		}
+
+		@media (max-width: 1080px) {
+			.whiteBox {
+				strong {
+					font-size: 0.75rem;
+				}
+				p {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		ul {
+			display: flex;
+			padding: 1.5rem 4rem;
+			justify-content: center;
+			list-style: none;
+			width: 80vw;
+			margin-top: 1rem;
+
+			strong {
+				text-transform: uppercase;
+				font-weight: 700;
+				color: var(--md-gray);
+				font-size: 0.9rem;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+
+			p {
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: var(--dark-gray);
+			}
+
+			li + li {
+				margin-left: 3rem;
+				position: relative;
+
+				div {
+					padding-left: 3rem;
+				}
+
+				&:before {
+					content: '';
+					display: inline-block;
+					width: 2px;
+					height: 75px;
+					background: #cfcfcf;
+					position: absolute;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+
+		@keyframes fadeUp {
+			from {
+				transform: translateY(0px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(80px);
+				opacity: 1;
+			}
+		}
+		animation: fadeUp 0.5s ease-in-out forwards;
+
+		@media (max-width: 720px) {
+			.whiteBox {
+				min-width: 80vw;
+				display: flex;
+				li + li {
+					margin: 0rem 0.25rem;
+				}
+
+				strong {
+					font-size: 0.75rem;
+				}
+				p {
+					line-height: 1;
+					font-size: 1rem;
+				}
+			}
+		}
+
+		@media (max-width: 600px) {
+			.whiteBox {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+
+				// padding-top: 4rem;
+				padding: 0.75rem 0;
+				p {
+					font-size: 1.5rem;
+					font-weight: 700;
+				}
+
+				li + li {
+					padding-top: 1rem;
+					margin: 0;
+
+					div {
+						padding: 0;
+					}
+
+					&:before {
+						display: none;
+					}
+				}
+			}
+		}
+		@media (max-width: 580px) {
+		}
+	}
+
+	.mapContent {
+		background: #ccc;
+
+		// height: 100vh;
+		width: 100%;
+		z-index: 1;
+
+		.leaf-top {
+			top: initial;
+			bottom: 1rem;
+		}
+	}
+}
