@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.scss'
 import dynamic from 'next/dynamic'
-
+import Head from 'next/head'
+import Image from 'next/image'
+import { Loader } from '../components/Loader'
 const Map = dynamic(() => import('../components/Map/index'), { ssr: false })
 
 interface ResultsProps {
@@ -84,7 +86,9 @@ export default function Home() {
 
   return (
     <main className={styles.container}>
-
+      <Head>
+        <title>IP Address Tracker - Find any IP or domain</title>
+      </Head>
       <div className={styles.searchBox}>
         <h2>IP Address Tracker</h2>
 
@@ -98,7 +102,12 @@ export default function Home() {
             }) => setIpAdress(target.value)} />
 
           <button disabled={!!loading} onClick={handleSubmit}>
-            {loading ? <div className="lds-dual-ring"></div> : <img src='/icon-arrow.svg' alt="button search" />}
+            {loading ? <Loader /> : <Image
+              src="/icon-arrow.svg"
+              alt="Button go"
+              width={'30%'}
+              height={'30%'}
+            />}
           </button>
         </div>
 

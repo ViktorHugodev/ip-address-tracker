@@ -8,7 +8,7 @@ const Map = ({ location, defaultPosition }: any) => {
 
   function handleSetView() {
     if (map && location) {
-      map.flyTo(location, 10, {
+      map.flyTo(location, 15, {
         duration: 4
       })
     }
@@ -30,7 +30,7 @@ const Map = ({ location, defaultPosition }: any) => {
   return (
     <MapContainer
       center={defaultPosition}
-      zoom={13}
+      zoom={15}
       scrollWheelZoom={false}
       style={{ width: '100%', height: '100%' }}
       whenCreated={map => setMap(map)}
